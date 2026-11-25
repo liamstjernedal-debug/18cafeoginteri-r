@@ -139,17 +139,48 @@ h2 em,h1 em{font-style:italic;color:var(--terra)}
 /* ---------- catering: bestillingslapp ---------- */
 .catering{padding:clamp(90px,11vw,150px) 0}
 .catering-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(36px,6vw,90px);align-items:center}
-.pad{position:relative;background:#fffdf8;padding:44px clamp(24px,4vw,48px) 40px;box-shadow:0 22px 40px -24px #3a342c66;transform:rotate(-1deg);
-  background-image:linear-gradient(90deg,transparent 46px,#e8b9a3 46px 47.5px,transparent 47.5px),repeating-linear-gradient(#fffdf8 0 37px,#d9e1e6 37px 38px);background-position:0 0,0 22px}
+.pad{position:relative;background:#fffdf8;padding:44px clamp(24px,4vw,48px) 36px clamp(56px,6vw,72px);box-shadow:0 22px 40px -24px #3a342c66;transform:rotate(-.8deg);
+  background-image:linear-gradient(90deg,transparent 38px,#e8b9a3 38px 39.5px,transparent 39.5px)}
 .pad::before{content:"";position:absolute;top:-14px;left:50%;width:120px;height:28px;transform:translateX(-50%) rotate(2deg);background:#d9c9a8cc;box-shadow:0 1px 2px #0001}
-.pad h2{font-size:clamp(2.2rem,4.4vw,3.6rem);margin:6px 0 18px;padding-left:22px}
-.pad .eyebrow{padding-left:22px}
-.pad dl{margin:0;padding-left:22px}
-.pad .row{display:grid;grid-template-columns:120px 1fr;align-items:end;min-height:38px}
-.pad dt{font:500 .7rem/38px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#7b6f60}
-.pad dd{margin:0;font:500 1.65rem/38px var(--hand);color:#2c4a6b}
-.pad dd s{color:#9a8e80}
-.pad .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding-left:22px}
+.pad h2{font-size:clamp(2.2rem,4.4vw,3.4rem);margin:6px 0 10px}
+.pad-intro{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.pad fieldset{border:0;margin:0;padding:0;min-width:0}
+.pad .field{display:block;margin-top:14px}
+.pad .field.two{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.pad label,.pad legend{font:500 .68rem/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#7b6f60;padding:0}
+.pad input:not([type=radio]),.pad textarea{display:block;width:100%;margin-top:2px;border:0;border-bottom:1.5px dotted #a99c89;border-radius:0;background:transparent;
+  font:500 1.6rem/1.3 var(--hand);color:#2c4a6b;padding:4px 2px;letter-spacing:0;text-transform:none;-webkit-appearance:none;appearance:none;min-height:44px}
+.pad textarea{resize:vertical;line-height:38px;border-bottom:0;padding:0 2px;min-height:114px;
+  background:repeating-linear-gradient(transparent 0 36.5px,#a99c89 36.5px 38px)}
+.pad input::placeholder,.pad textarea::placeholder{color:#a99c89;opacity:1}
+.pad input:focus,.pad textarea:focus{outline:none;border-bottom-color:var(--terra);background-color:#fbf3e8}
+.pad .chips{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:8px}
+.pad .chips label{position:relative;cursor:pointer}
+.pad .chips input{position:absolute;opacity:0;width:1px;height:1px}
+.pad .chips span{display:inline-block;font:500 1.4rem/1 var(--hand);text-transform:none;letter-spacing:0;color:#2c4a6b;padding:7px 14px 9px;border:1.5px solid transparent;border-radius:50% 44% 52% 46%/56% 50% 48% 52%;transition:border-color .2s,background .2s}
+.pad .chips label:hover span{background:#f3ebdd}
+.pad .chips input:checked+span{border-color:var(--terra);color:var(--terra)}
+.pad .chips input:focus-visible+span{outline:2px dashed var(--terra);outline-offset:3px}
+.pad .field.invalid input,.pad .field .invalid{border-bottom-color:#b3261e}
+.pad fieldset.invalid legend,.pad label.invalid{color:#b3261e}
+.pad-error{margin-top:18px;color:#b3261e;font-size:.9rem}
+.pad-done{margin-top:16px;font:500 1.5rem/1.2 var(--hand);color:var(--olive-d)}
+.pad .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.pad button{font-family:inherit;cursor:pointer}
+.pad-small{margin-top:18px;font-size:.84rem;color:var(--muted)}
+.pad [hidden]{display:none!important}
+.pad button[disabled]{opacity:.6;cursor:progress}
+.pad-thanks{position:relative;outline:none}
+.pad-thanks h2{margin-top:6px}
+.summary{margin:18px 0 0}
+.summary div{display:grid;grid-template-columns:130px 1fr;gap:10px;border-bottom:1.5px dotted #a99c89;padding:6px 0}
+.summary dt{font:500 .68rem/2.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#7b6f60}
+.summary dd{margin:0;font:500 1.45rem/1.3 var(--hand);color:#2c4a6b;overflow-wrap:anywhere}
+.received{position:absolute;top:-6px;right:0;border:2.5px solid #2f6b3c;color:#2f6b3c;border-radius:8px;padding:6px 14px 4px;text-align:center;
+  font:700 1.5rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;transform:rotate(9deg);opacity:.85;animation:stamp .45s cubic-bezier(.2,1.6,.4,1) both}
+.received small{display:block;font-size:.5rem;letter-spacing:.2em;margin-top:4px}
+@keyframes stamp{from{transform:rotate(9deg) scale(2.2);opacity:0}}
+@media(max-width:480px){.summary div{grid-template-columns:1fr;gap:0}.received{font-size:1.1rem;top:-20px}}
 .catering-copy>p:not(.eyebrow){color:var(--muted);max-width:480px;margin:0 0 30px}
 .catering-copy h2{margin:14px 0 22px}
 .catering-photo{position:relative;margin-top:10px}
@@ -216,12 +247,12 @@ h2 em,h1 em{font-style:italic;color:var(--terra)}
   .receipt:nth-child(2){margin-top:0}
   .pc-left{border-right:0;border-bottom:1.5px dashed var(--line)}
   .postcard{transform:none}
+  .pad{transform:none}
 }
 @media(max-width:480px){
-  .pad{padding-left:58px}
-  .pad .row{grid-template-columns:1fr;min-height:0}
-  .pad dt{line-height:1;padding-top:10px}
-  .pad dd{font-size:1.45rem;line-height:28px}
+  .pad{padding-left:52px;padding-right:20px;background-image:linear-gradient(90deg,transparent 32px,#e8b9a3 32px 33.5px,transparent 33.5px)}
+  .pad .field.two{grid-template-columns:1fr;gap:0}
+  .pad .field.two label+label{margin-top:14px}
   .board{grid-template-columns:1fr 1fr;gap:16px}
   .polaroid figcaption{font-size:1.1rem}
   .postmark{right:96px;width:80px;height:80px}
@@ -377,22 +408,59 @@ h2 em,h1 em{font-style:italic;color:var(--terra)}
         <p>Fra lunsj på kontoret til bursdager og hyggelige sammenkomster. Vi gjør maten klar på serveringsfat og leverer til deg. Ring oss, så finner vi noe som passer anledningen.</p>
         <div class="catering-photo"><div class="arch"><img loading="lazy" src="https://static.wixstatic.com/media/228e29_4fe0937011654f8eab4d0bad81f2b8c7~mv2.jpg" alt="Mat fra 18 Café"></div></div>
       </div>
-      <div class="pad reveal" aria-label="Bestillingslapp for catering">
+      <form class="pad reveal" id="bestilling" aria-labelledby="best-tittel" novalidate>
         <p class="eyebrow">Bestillingslapp</p>
-        <h2>Catering <em>fra 18</em></h2>
-        <dl>
-          <div class="row"><dt>Anledning</dt><dd>bursdag / jobb / selskap</dd></div>
-          <div class="row"><dt>Hvor mange</dt><dd>så mange dere er</dd></div>
-          <div class="row"><dt>Servering</dt><dd>klart på fat ✓</dd></div>
-          <div class="row"><dt>Levering</dt><dd>vi kommer til deg ✓</dd></div>
-          <div class="row"><dt>Oppvask</dt><dd><s>deg</s> ikke ditt problem</dd></div>
-          <div class="row"><dt>Neste steg</dt><dd>ring oss ↓</dd></div>
-        </dl>
-        <div class="actions">
-          <a class="button" href="tel:+4794860081">Ring 94 86 00 81</a>
-          <a class="button ghost" href="tel:+4792840027">eller 92 84 00 27</a>
+        <h2 id="best-tittel">Catering <em>fra 18</em></h2>
+        <p class="pad-intro">Fortell oss litt om anledningen, så finner vi noe som passer.</p>
+
+        <fieldset class="field">
+          <legend>Anledning</legend>
+          <div class="chips">
+            <label><input type="radio" name="anledning" value="Bursdag" required><span>bursdag</span></label>
+            <label><input type="radio" name="anledning" value="Jobb / kontorlunsj"><span>jobb</span></label>
+            <label><input type="radio" name="anledning" value="Konfirmasjon / dåp"><span>konfirmasjon / dåp</span></label>
+            <label><input type="radio" name="anledning" value="Selskap"><span>selskap</span></label>
+            <label><input type="radio" name="anledning" value="Annet"><span>annet</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field two">
+          <label>Dato<input type="date" name="dato" required></label>
+          <label>Klokka<input type="time" name="tid" step="900"></label>
         </div>
-      </div>
+        <label class="field">Antall personer<input type="number" name="antall" min="1" max="500" inputmode="numeric" placeholder="ca. 15" required></label>
+
+        <fieldset class="field">
+          <legend>Levering</legend>
+          <div class="chips">
+            <label><input type="radio" name="levering" value="Levering" checked><span>lever til meg</span></label>
+            <label><input type="radio" name="levering" value="Henting"><span>jeg henter</span></label>
+          </div>
+        </fieldset>
+        <label class="field" id="adresse-felt">Leveringsadresse<input type="text" name="adresse" autocomplete="street-address" placeholder="gate, sted"></label>
+
+        <label class="field">Ønsker &amp; allergier<textarea name="onsker" rows="3" placeholder="f.eks. baguetter og salater, to glutenfrie"></textarea></label>
+
+        <div class="field two">
+          <label>Navn<input type="text" name="navn" autocomplete="name" required></label>
+          <label>Telefon<input type="tel" name="telefon" autocomplete="tel" inputmode="tel" required></label>
+        </div>
+
+        <p class="pad-error" role="alert" hidden></p>
+        <div class="actions">
+          <button class="button" type="submit">Send bestilling ↗</button>
+        </div>
+        <p class="pad-done" role="status" hidden></p>
+        <p class="pad-small">Heller snakke med oss? Ring <a href="tel:+4794860081">94 86 00 81</a> eller <a href="tel:+4792840027">92 84 00 27</a>.</p>
+        <div class="pad-thanks" hidden tabindex="-1">
+          <div class="received" aria-hidden="true">Mottatt<small>18 · Horten</small></div>
+          <p class="eyebrow">Bestillingslapp</p>
+          <h2>Takk, <em class="thanks-name"></em>!</h2>
+          <p class="pad-intro">Vi har fått bestillingen din og tar kontakt på telefon for å avtale detaljene.</p>
+          <dl class="summary"></dl>
+          <div class="actions"><button class="button ghost" type="button" id="ny-bestilling">Ny bestilling</button></div>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -456,6 +524,63 @@ if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce
   const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
   els.forEach(e=>obs.observe(e));
 }else els.forEach(e=>e.classList.add('show'));
+// ---------- cateringbestilling ----------
+(()=>{
+  const f=document.getElementById('bestilling');if(!f)return;
+  const err=f.querySelector('.pad-error'),done=f.querySelector('.pad-done'),adr=document.getElementById('adresse-felt');
+  const dato=f.elements.dato,d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());dato.min=d.toISOString().slice(0,10);
+  const syncAdr=()=>{adr.hidden=f.elements.levering.value!=='Levering'};f.addEventListener('change',syncAdr);syncAdr();
+  function check(){
+    const e=f.elements,miss=[];
+    f.querySelectorAll('.invalid').forEach(x=>x.classList.remove('invalid'));
+    const mark=(el,name)=>{(el.closest('fieldset')||el.closest('label')).classList.add('invalid');miss.push(name)};
+    if(!e.anledning.value)mark(e.anledning[0],'anledning');
+    if(!e.dato.value)mark(e.dato,'dato');else if(e.dato.value<e.dato.min)mark(e.dato,'en dato fram i tid');
+    if(!(+e.antall.value>0))mark(e.antall,'antall personer');
+    if(!e.navn.value.trim())mark(e.navn,'navn');
+    if(e.telefon.value.replace(/\D/g,'').length<8)mark(e.telefon,'telefonnummer');
+    err.hidden=!miss.length;
+    if(miss.length){err.textContent='Mangler: '+miss.join(', ')+'.';const first=f.querySelector('.invalid input');if(first)first.focus()}
+    return!miss.length;
+  }
+  const thanks=f.querySelector('.pad-thanks'),fields=[...f.children].filter(c=>c!==thanks);
+  const fmtDato=v=>{if(!v)return'';const[y,m,dd]=v.split('-');return dd+'.'+m+'.'+y};
+  function data(){
+    const e=f.elements;return{
+      anledning:e.anledning.value,dato:fmtDato(e.dato.value),tid:e.tid.value,antall:e.antall.value,
+      levering:e.levering.value,adresse:e.adresse.value.trim(),onsker:e.onsker.value.trim(),
+      navn:e.navn.value.trim(),telefon:e.telefon.value.trim()};
+  }
+  // ↓ Koble opp her senere (f.eks. Formspree, e-post eller eget API).
+  //   Funksjonen får bestillingen som et objekt og skal returnere et Promise.
+  //   Foreløpig later den bare som den sender.
+  async function sendBestilling(bestilling){
+    await new Promise(r=>setTimeout(r,900));
+    return true;
+  }
+  f.addEventListener('submit',async ev=>{
+    ev.preventDefault();if(!check())return;
+    const btn=f.querySelector('button[type=submit]'),label=btn.textContent;
+    btn.disabled=true;btn.textContent='Sender …';
+    const d=data();
+    try{
+      await sendBestilling(d);
+      const rows=[['Anledning',d.anledning],['Når',d.dato+(d.tid?' kl. '+d.tid:'')],['Antall',d.antall+' personer'],
+        ['Levering',d.levering==='Levering'?(d.adresse||'adresse avtales'):'henter selv'],['Ønsker',d.onsker],['Telefon',d.telefon]];
+      const sum=thanks.querySelector('.summary');sum.replaceChildren();
+      rows.filter(r=>r[1]).forEach(([k,v])=>{const w=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=v;w.append(dt,dd);sum.append(w)});
+      thanks.querySelector('.thanks-name').textContent=d.navn.split(' ')[0];
+      fields.forEach(c=>c.hidden=true);thanks.hidden=false;thanks.focus({preventScroll:true});
+      f.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+    }catch{
+      err.hidden=false;err.textContent='Noe gikk galt. Prøv igjen, eller ring oss på 94 86 00 81.';
+    }finally{btn.disabled=false;btn.textContent=label}
+  });
+  document.getElementById('ny-bestilling').addEventListener('click',()=>{
+    f.reset();syncAdr();thanks.hidden=true;fields.forEach(c=>c.hidden=c.classList.contains('pad-error')||c.classList.contains('pad-done'));
+    f.querySelector('input').focus();
+  });
+})();
 </script>
 </body>
 </html>
